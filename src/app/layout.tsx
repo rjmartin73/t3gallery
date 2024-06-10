@@ -13,6 +13,7 @@ function TopNav() {
     <nav className="flex w-full items-center justify-between border-b p-4
     text-white text-xl font-semibold">  
       <div>T3 Gallery</div>
+      <div>Sign In</div>
     </nav>
   );  
 
