@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <main className="">
       <div className="flex flex-wrap">
-        {[...mockImages, ...mockImages, ...mockImages].map((image) => (
+        {[...mockImages, ...mockImages, ...mockImages, ...mockImages].map((image) => (
             <img
               src={image.url}
               className="w-48 h-auto p-4"></img>))}
