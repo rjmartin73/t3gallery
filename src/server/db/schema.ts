@@ -9,6 +9,7 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
+import { PassThrough } from "stream";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -29,6 +30,23 @@ export const posts = createTable(
     updatedAt: timestamp("updatedAt", { withTimezone: true }),
   },
   (example) => ({
-    nameIndex: index("name_idx").on(example.name),
+    nameIndex: index("post_name_idx").on(example.name),
+  })
+);
+
+export const users = createTable(
+  "users",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }),
+    email: varchar("email", { length: 256 }),
+    password: varchar("password", { length: 256 }),
+    image: varchar("image", { length: 256 }),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .default(sql`CURRENT_TIMESTAMP`)
+      .notNull(),
+  },
+  (example) => ({
+    nameIndex: index("user_name_idx").on(example.name),
   })
 );
